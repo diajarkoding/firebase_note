@@ -78,9 +78,9 @@ class Database {
     );
   }
 
-  Stream<NoteModel> streamDataNote(String id) {
+  Stream<NoteModel> streamDataNote(String id) async* {
     try {
-      return firestore
+      yield* firestore
           .collection('users')
           .doc(id)
           .collection('notes')
@@ -100,9 +100,9 @@ class Database {
     }
   }
 
-  Stream<List<NoteModel>> streamDataListNote(String id) {
+  Stream<List<NoteModel>> streamDataListNote(String id) async* {
     try {
-      return firestore
+      yield* firestore
           .collection('users')
           .doc(id)
           .collection('notes')
